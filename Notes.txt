@@ -1,0 +1,39 @@
+// Single line comments
+
+/* This is a
+multiline comment and this continues..
+in the next line also. */
+
+confirm("To confirm something from the user")
+
+alert("To alert users")
+
+document.write("To write something to the web page, when this js script is loaded..")
+
+var = 10 //to define a variable. 
+
+// JavaScript is case-sensitive
+
+
+//How to load javascript in HTML page? 
+<script src="js/script.js" >
+
+console.log("This will print this message on the console.")
+
+
+// Here is an example of using the greater than (>) operator.
+console.log(15 > 4); // 15 > 4 evaluates to true, so true is printed.
+
+// Fill in with >, <, === so that the following print out true:
+console.log("Xiao Hui".length <  122);
+console.log("Goody Donaldson".length > 8);
+console.log(8*2 === 16);
+
+// if condition:
+if ( 2 < 3) {
+    console.log("2 < 3");
+}
+
+
+
+
