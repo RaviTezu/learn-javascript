@@ -13,9 +13,11 @@ document.write("To write something to the web page, when this js script is loade
 prompt("To ask the user for some info.");
 
 //Data types
-//strings (e.g. "dogs go woof!")
-//numbers (e.g. 4, 10)
+//strings  (e.g. "dogs go woof!")
+//numbers  (e.g. 4, 10)
 //booleans (e.g. false, 5 > 4)
+//arrays   (e.g [1,2,"3","four"])
+//Objects  (e.g {name:"Ravi",age:24})
 
 var = 10; //to define a number variable. 
 
@@ -350,3 +352,68 @@ var myArray = [1,true,"okay", me];
 
 var me = {name:"Ravi", age:24};
 var newArray = [[1,3],[me]];
+
+eg:
+var myObject = {
+  name: 'Eduardo',
+  type: 'Most excellent',
+  age: 24,
+  add: ["407", "Teja Res","road. no:4" ,500049],
+  interests: ["coding","cricket"]
+};
+
+eg:
+var myOwnObject = {};
+myOwnObject.name = "ravi";
+myOwnObject.age = 24;
+
+eg:
+var friends = {};
+friends.bill = {
+    firstName:"Bill",
+    lastName:"Gates",
+    number:"12345",
+    address:["MS","Phil"]
+    };
+friends.steve = {
+    firstName:"Steve",
+    lastName:"Jobs",
+    number:"123457",
+    address:["Apple","Pixel"]
+    };
+
+var list = function(param1){ 
+    for(var ob in param1){
+    console.log(ob);
+    }
+};
+
+var search = function(name){
+    for(var ob in friends){
+    if(friends[ob].firstName === name) {
+        console.log(ob);
+        console.log(friends[ob]);
+        return friends[ob];
+    }
+    }
+};
+
+eg:
+for(var i=1; i<21;i++){
+    if(i%3==0){
+        if(i%5==0){ console.log("FizzBuzz");}
+        else{ console.log("Fizz");}
+    }
+    else if(i%5==0){
+        console.log("Buzz");}
+    else {
+        console.log(i);
+    }
+};
+
+//Fifth data type: objects - This data type is a little bit more complex. Objects allow us to represent in code real world things and entities (such as a person or bank account). We do this by storing all relevant information in one place—an object.
+
+//Properties
+Let's review what we previously covered. Each piece of information we include in an object is known as a property. Think of a property like a category label that belongs to some object. When creating an object, each property has a name, followed by : and then the value of that property. For example, if we want Bob's object to show he is 34, we'd type in age: 34.
+
+age is the property, and 34 is the value of this property. When we have more than one property, they are separated by commas. The last property does not end with a comma.
