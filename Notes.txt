@@ -414,6 +414,24 @@ for(var i=1; i<21;i++){
 //Fifth data type: objects - This data type is a little bit more complex. Objects allow us to represent in code real world things and entities (such as a person or bank account). We do this by storing all relevant information in one place—an object.
 
 //Properties
-Let's review what we previously covered. Each piece of information we include in an object is known as a property. Think of a property like a category label that belongs to some object. When creating an object, each property has a name, followed by : and then the value of that property. For example, if we want Bob's object to show he is 34, we'd type in age: 34.
+/*Let's review what we previously covered. Each piece of information we include in an object is known as a property. Think of a property like a category label that belongs to some object. When creating an object, each property has a name, followed by : and then the value of that property. For example, if we want Bob's object to show he is 34, we'd type in age: 34.
+age is the property, and 34 is the value of this property. When we have more than one property, they are separated by commas. The last property does not end with a comma.*/
 
-age is the property, and 34 is the value of this property. When we have more than one property, they are separated by commas. The last property does not end with a comma.
+eg:
+var bob = {
+  name: "Bob Smith",
+  age: 30
+};
+var susan = {
+  name: "Susan Jordan",
+  age: 25
+};
+// here we save Bob's information
+var name1 = bob.name;
+var age1 = bob.age;
+// finish this code by saving Susan's information
+var name2 =susan['name'];
+var age2 =susan['age'];
+
+
+
