@@ -1064,4 +1064,209 @@ var myBalanceMethod = john.askTeller();
 var myBalance = myBalanceMethod();
 console.log(myBalance);
 
+/* Passing Arguments
+The askTeller function has been modified within the Person class to directly give you your balance. However, it now needs the account password in order to return the bankBalance. */
+
+eg:
+function Person(first,last,age) {
+   this.firstname = first;
+   this.lastname = last;
+   this.age = age;
+   var bankBalance = 7500;
+  
+   this.askTeller = function(pass) {
+     if (pass == 1234) return bankBalance;
+     else return "Wrong password.";
+   };
+}
+
+var john = new Person('John','Smith',30);
+/* the variable myBalance should access askTeller()
+   with a password as an argument  */
+var myBalance = john.askTeller(1234);
+
+
+eg:
+var languages = {
+    english: "Hello!",
+    french: "Bonjour!",
+    notALanguage: 4,
+    spanish: "Hola!"
+};
+
+// print hello in the 3 different languages
+for(var l in languages){
+    if(typeof languages[l] === "string") {
+    console.log(languages[l]);
+    }
+};
+
+/*We should all know by now what's so cool about using prototype: we can define a method for a class, and any instance of the class (i.e., object created using that class's constructor) can use that method.
+
+Remember that classes and the prototype are important to OOP!*/
+
+eg:
+function Dog (breed) {
+    this.breed = breed;
+};
+
+// add the sayHello method to the Dog class 
+// so all dogs now can say hello
+Dog.prototype.sayHello = function(){
+    console.log("Hello this is a "+this.breed+" dog");
+}
+
+
+var yourDog = new Dog("golden retriever");
+yourDog.sayHello();
+
+var myDog = new Dog("dachshund");
+myDog.sayHello();
+
+
+/*Do you remember how we said every JavaScript object has some baggage associated with it? Part of this baggage was the hasOwnProperty method available to all objects. Now let's see where this came from...
+If we have just a plain object (i.e., not created from a class constructor), recall that it automatically inherits from Object.prototype. Could this be where we get hasOwnProperty from? How can we check? */
+// what is this "Object.prototype" anyway...? - object
+var prototypeType =  typeof Object.prototype;
+console.log(prototypeType);
+
+// now let's examine it! - prints true
+var hasOwn = Object.prototype.hasOwnProperty('hasOwnProperty');
+console.log(hasOwn);
+
+/*Private Eye
+Recall that:
+
+Public properties can be accessed from outside the class
+Private properties can only be accessed from within the class
+Using constructor notation, a property declared as this.property = "someValue;" will be public, whereas a property declared with var property = "hiddenValue;" will be private.
+
+In this exercise, hit run and you'll see that all your grades are exposed! You really just want people to know your overall GPA.*/
+
+eg:
+function StudentReport() {
+    var grade1 = 4;
+    var grade2 = 2;
+    var grade3 = 1;
+    this.getGPA = function() {
+        return (grade1 + grade2 + grade3) / 3;
+    };
+    
+    
+}
+
+var myStudentReport = new StudentReport();
+
+for(var x in myStudentReport) {
+    if(typeof myStudentReport[x] !== "function") {
+        console.log("Muahaha! " + myStudentReport[x]);
+    }
+}
+
+console.log("Your overall GPA is " + myStudentReport.getGPA());
+
+eg:
+var cashRegister = {
+    total: 0,
+    
+    add: function(itemCost){
+      this.total=this.total + itemCost;  
+    },
+    
+    scan: function (item) {
+        switch (item) { 
+        case "eggs": 
+            this.add(0.98); 
+            break;
+        case "milk": 
+            this.add(1.23); 
+            break;
+        case "magazine":
+            this.add(4.99);
+            break;
+        case "chocolate":
+            this.add(0.45);
+            break;
+    }
+},
+};
+
+//Scan 2 eggs and 3 magazines
+cashRegister.scan("eggs");
+cashRegister.scan("eggs");
+cashRegister.scan("magazine");
+cashRegister.scan("magazine");
+cashRegister.scan("magazine");
+//Show the total bill
+console.log('Your bill is '+cashRegister.total);
+
+eg:
+var cashRegister = {
+    total:0,
+    //Dont forget to add your property
+    add: function(itemCost) {
+        this.total +=  itemCost;
+    },
+    scan: function(item,quantity) {
+        switch (item) {
+        case "eggs": this.add(0.98 * quantity); break;
+        case "milk": this.add(1.23 * quantity); break;
+        case "magazine": this.add(4.99 * quantity); break;
+        case "chocolate": this.add(0.45 * quantity); break;
+        }
+        return true;
+    },
+    //Add the voidLastTransaction Method here
+    
+    
+};
+
+cashRegister.scan('eggs',1);
+cashRegister.scan('milk',1);
+cashRegister.scan('magazine',1);
+cashRegister.scan('chocolate',4);
+
+//Void the last transaction and then add 3 instead
+
+
+//Show the total bill
+console.log('Your bill is '+cashRegister.total);
+
+eg:
+var cashRegister = {
+    total:0,
+    lastTransactionAmount: 0,
+    add: function(itemCost) {
+        this.total +=  itemCost;
+        lastTransactionAmount = itemCost;
+    },
+    scan: function(item,quantity) {
+        switch (item) {
+        case "eggs": this.add(0.98 * quantity); break;
+        case "milk": this.add(1.23 * quantity); break;
+        case "magazine": this.add(4.99 * quantity); break;
+        case "chocolate": this.add(0.45 * quantity); break;
+        }
+        return true;
+    },
+    //Add the voidLastTransaction Method here
+    voidLastTransaction: function(){
+        this.total = this.total - lastTransactionAmount;
+    }
+};
+
+cashRegister.scan('eggs',1);
+cashRegister.scan('milk',1);
+cashRegister.scan('magazine',1);
+cashRegister.scan('chocolate',4);
+
+//Void the last transaction and then add 3 instead
+cashRegister.voidLastTransaction();
+cashRegister.scan('chocolate',3);
+
+//Show the total bill
+console.log('Your bill is '+cashRegister.total);
+
+
+
 
