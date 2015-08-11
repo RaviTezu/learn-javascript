@@ -28,7 +28,8 @@ var foo = "foo";
 
 console.log(foo); /"foo"
 
-*) let keyword in ES6:
+*) let keyword in ES6: (Block scope)
+- Where as, var is function scope
 function foo() {
 var bar = "bar";
 for(let i=0; i < bar.length; i++){
@@ -55,3 +56,14 @@ console.log(bam); //Error
 foo("bar");
 
 }
+
+If you have a "let z = 2;" declared in a If statement at the middle, this z is available only from the middle of the If statement. So put all the lets at the top of the blocks.
+
+- function foo(bar) {
+  let (baz = bar) {
+    console.log(baz); //"bar"
+  }
+  console.log(baz); //Error
+}
+
+foo("bar");
