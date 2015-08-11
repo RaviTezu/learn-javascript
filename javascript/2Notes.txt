@@ -78,3 +78,135 @@ So, use this:
 foo("bar");
 
 A tool for use let-er to take the first example and returns the above form. So, it is like it will take the non-standart code and returns a standard code - These let-er or coffee-script are like transpilers.
+
+
+*) Use ES6 and use some transpilers to convert it to ES5.
+
+*) JS have lexical scoping. You can cheat this lexical scoping by using eval and with keywords ;)
+
+*) You can create a new scope in JS by functions, catch, curly with let keywords. 
+
+*) undeclared vs undefined: undefined is a value, however undeclared is never been declared. undefined is like, it is currently not having a value, if it is undeclared, you will get a reference error. 
+
+*) Hoisting:(conceptual model, not a standart)
+a;         
+b;
+var a = b;
+var b = 2;
+b;
+a;
+
+-----> Will be re-formed like this, during the compile phase:
+var a;
+var b;
+a;
+b;
+a = b;
+b = 2;
+b;
+a;
+
+
+------ 
+var a = b();
+var c = d();
+a;
+c;
+
+function b() {
+return c;
+}
+
+var d = function() {
+return b();
+};
+
+----> moved:
+function b() {
+  return c;
+}
+
+var a;
+var c;
+var d;
+a = b();
+c = d();
+a;
+c;
+d = function(){
+   return b();
+};
+
+-------
+
+foo();
+var foo = 2;
+
+function foo() {
+  console.log("bar");
+}
+
+function foo() {
+  console.log("foo");
+}
+
+----> 
+
+function foo(){
+console.log("bar");
+}
+function foo(){
+console.log("foo");
+}
+var foo = 2;
+foo();
+
+- Hoisting? - It is like, pull ups the declarations: But why it hoisting? Mutual recursion wouldn't be possible if you don't having this hoisting, as you mutual recursion is like, having two or more functions and one function calling the other function and the other function is calling the before function - Let's say A calls B and B call A --> So, you would need one function to be declared late. So, it has to swap places...
+
+Also, there's no hoisting for let :)
+Ex:
+
+a(1);
+
+function a(foo){
+ if(foo > 20) return foo;
+ return b(foo+2);
+}
+
+function b(foo) {
+ return c(foo) + 1; 
+}
+
+function c(foo) {
+ return a(foo*2);
+}
+
+Ans:
+a(1) == 39
+ |
+b(3) == 39
+ | 
+c(3) + 1 == 39
+ | 
+a(6) == 38
+ |
+b(8) == 38
+ |
+c(8) + 1 == 38
+ |
+a(16) == 37
+ |
+b(18) == 37
+ |
+c(18) + 1 == 37
+ |
+36 
+
+Ex: Including the header file at the top of c program is manaul hoisting. 
+
+*) function foo(bar){
+if (bar) {
+  console.log(baz); //ReferenceError
+  let baz = bar;
+}
+
