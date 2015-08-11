@@ -59,7 +59,8 @@ foo("bar");
 
 If you have a "let z = 2;" declared in a If statement at the middle, this z is available only from the middle of the If statement. So put all the lets at the top of the blocks.
 
-- function foo(bar) {
+- Note: This is rejected in ES6
+function foo(bar) {
   let (baz = bar) {
     console.log(baz); //"bar"
   }
@@ -67,3 +68,13 @@ If you have a "let z = 2;" declared in a If statement at the middle, this z is a
 }
 
 foo("bar");
+
+So, use this:
+- function foo(bar){
+  /* let */ { let baz = bar;
+    console.log(baz); //"bar"
+  } console.log(baz); //Error
+}
+foo("bar");
+
+A tool for use let-er to take the first example and returns the above form. So, it is like it will take the non-standart code and returns a standard code - These let-er or coffee-script are like transpilers.
