@@ -1,17 +1,57 @@
-Never use a anonymous function
+*) Never use a anonymous function
 
-Never use `eval` or `with` keywords in your code - In strict mode the `with` keyword is disabled. 
+*) Never use `eval` or `with` keywords in your code - In strict mode the `with` keyword is disabled. 
 
-IIFE:
+*) IIFE:
 var foo = "foo";
 
 (function() {
 
   var foo = "foof2";
-  console.log(foo);  //foo2
+  console.log(foo);  //"foo2"
 })();
 
-console.log(foo); //foo
+console.log(foo); //"foo"
 
-- Wrapping the function with paranthesis will make it an fucnction expression. 
-- The variable declared in this function will not be leaked out.
+- Wrapping the function with paranthesis will make it an fucnction expression.
+- The variables declared in this function will not be leaked out.
+
+OR 
+
+var foo = "foo";
+ 
+(function(bar){
+  var foo = bar;
+  console.log(foo); /"foo"
+
+})(foo);
+
+console.log(foo); /"foo"
+
+*) let keyword in ES6:
+function foo() {
+var bar = "bar";
+for(let i=0; i < bar.length; i++){
+  console.log(bar.charAt(i));
+}
+console.log(i); //RefernceError
+}
+
+foo();
+
+- with "var" instead of "let", will attach the variable i to the function scope rather than the for block scope. so "let" is kinda hijacking the scope of for loop.
+
+- function foo(bar) {
+if (bar) {
+  let baz = bar;
+  if (baz) {
+    let bam = baz;
+  }
+  console.log(bam); //Error
+}
+console.log(bam); //Error
+}
+
+foo("bar");
+
+}
