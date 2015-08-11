@@ -1,0 +1,17 @@
+Never use a anonymous function
+
+Never use `eval` or `with` keywords in your code - In strict mode the `with` keyword is disabled. 
+
+IIFE:
+var foo = "foo";
+
+(function() {
+
+  var foo = "foof2";
+  console.log(foo);  //foo2
+})();
+
+console.log(foo); //foo
+
+- Wrapping the function with paranthesis will make it an fucnction expression. 
+- The variable declared in this function will not be leaked out.
