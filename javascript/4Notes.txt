@@ -1,8 +1,5 @@
 Object-Orienting:
 -----------------
-- Common OO Patterns
-- Prototype
-- Inheritance vs Behaviour Delegation
 
 Singleton:
 
@@ -24,6 +21,9 @@ var another = new Router();
 
 myrouter == another;
 
+---
+
+*) A constructor makes an object linked to its own prototype.
 
 
 
