@@ -1,0 +1,29 @@
+Object-Orienting:
+-----------------
+- Common OO Patterns
+- Prototype
+- Inheritance vs Behaviour Delegation
+
+Singleton:
+
+-> var Router = function(){
+   //Singleton!
+   if (Router.__instance__){
+       return Router.__instance__;
+   }
+   Router.__instance__ = this;
+   this.routes = {};
+};
+
+Router.protoype.setRoute = function(match, fn) {
+   this.routes[match] = fn;
+};
+
+var myrouter = new Router();
+var another = new Router();
+
+myrouter == another;
+
+
+
+
