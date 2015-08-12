@@ -285,3 +285,33 @@ var obj = {bar:"bar2"};
 
 foo();  ///bar1
 foo.call(obj); //bar2 and also, you can use apply.
+
+Ex2: (Hard binding)
+
+function foo(){
+  console.log(this.bar);
+}
+
+var obj = { bar: "bar" };
+var obj2 = {bar: "bar2"};
+
+var orig = foo;
+foo = function(){ orig.call(obj); };
+
+foo(); //bar
+foo.call(obj2); //bar
+
+*) New: Don't compare with other languages. 
+- function foo() {
+  this.baz = "baz";
+  console.log(this.bar + " " + baz);
+}
+
+var bar = "bar";
+var baz = new foo(); //??? 
+
+-> new keyword infront of a function will turn it into a constructor call. 
+4 things: 1. A brand new empty object is created. 
+          2. The object created in the step1 is linked to another object. 
+          3. The object created in the step2 is bounded to the this object. 
+          4. If the function isn't returning anything, then 
