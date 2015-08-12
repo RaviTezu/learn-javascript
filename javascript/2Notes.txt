@@ -3,6 +3,18 @@
 *) Never use `eval` or `with` keywords in your code - In strict mode the `with` keyword is disabled. 
 
 *) IIFE:
+- Never use a anonymous function, name it.
+
+
+- Never use `eval` or `with` keywords in your code - In strict mode the `with` keyword is disabled. 
+
+
+- IIFE:(Immediately invoked fuction expression)
+--------------------------------------------
+- Wrapping the function with paranthesis will make it an fucnction expression. 
+- The variables declared in this function will not be leaked out.
+- It is good, if you could name your IFFE function, it wasn't named in the above example. 
+
 var foo = "foo";
 
 (function() {
@@ -209,4 +221,5 @@ if (bar) {
   console.log(baz); //ReferenceError
   let baz = bar;
 }
+
 
