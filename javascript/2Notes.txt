@@ -222,4 +222,55 @@ if (bar) {
   let baz = bar;
 }
 
+*) this:
+Every function, while executing has a reference to its current execution context called "this".
+Execution context: where the function is called and when the function is called. 
+Don't compare javascript's "this" with other languages "this".
+
+4 Rules: (ask the call sight for these 4 rules.)
+------------------------------------------------
+2 rules - Implicit and default binding rules:
+
+function foo(){
+  console.log(this.bar);
+}
+
+var bar = "bar1";
+var o2  = { bar: "bar2", foo:foo };
+var o3  = { bar: "bar3", foo:foo };
+
+foo();     //bar1 - and in strict mode it is undefined, as you know in not strict mode it is the global variable - default rule.
+o2.foo();  //bar2 - o2 has a reference to the foo function in it. 
+o3.foo();  //bar3
+
+
+-----
+
+function foo() {
+  var bar = "bar1";
+  baz();
+}
+
+function baz() {
+  console.log(this.bar);
+}
+
+var bar = "bar2";
+foo();   // bar2
+
+----- 
+
+fuction foo() {
+  var bar = "bar1";
+  this.baz = baz;
+  this.baz();
+}
+
+function baz(){
+  console.log(this.bar);
+}
+
+var bar = "bar2";
+foo(); // bar1 
+
 
