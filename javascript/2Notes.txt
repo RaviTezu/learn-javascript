@@ -315,3 +315,21 @@ var baz = new foo(); //???
           2. The object created in the step1 is linked to another object. 
           3. The object created in the step2 is bounded to the this object. 
           4. If the function isn't returning anything, then 
+
+function foo(){
+  this.baz = "bar";
+  console.log(this.bar + " " +baz);
+}
+
+var bar = "bar";
+var baz = new foo();  // undefined undefined
+
+----
+4 Questions you have to remember:
+
+1. was the function called with `new` ?
+2. was the function called with `call` or `apply` specifying an explicit this?
+3. was the function called via a containing/owing object(context)?
+4. DEFAULT: global object(except strict mode)
+
+How can you seal a specific this to a function? why do that? why not? - use bind function.
