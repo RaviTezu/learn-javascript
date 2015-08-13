@@ -1,0 +1,47 @@
+Async Patterns: 
+---------------
+*) Callbacks:
+
+Ex: 
+setTimeout(function(){
+  console.log("callback!")  
+},1000);
+
+-> I am gonna setup a timeout for 1000ms and then process whatever you want but,
+when that timeoutfires, the function will printout the "callback!" string. 
+
+*)Call back hell: 
+function one(cb) {
+  console.log("one");
+  setTimeout(cb,1000);
+}
+function two(cb) {
+  console.log("two");
+  setTimeout(cb,1000);
+}
+function three() {
+  console.log("three");
+}
+
+one(function(){
+   two(three);
+});
+
+--> Inversion of Control. 
+
+*)Generators - ES6:
+
+function* gen() {
+  console.log("Hello");
+  yield null;
+  console.log("World!");
+}
+
+var it = gen();
+it.next(); //prints "Hello"
+it.next(); //prints "World!"
+
+*) Promises: Like a token, you get a fast-food resturatents. Which can be used later to get the food, you've ordered.
+  
+
+
