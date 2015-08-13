@@ -79,6 +79,8 @@ var b2 = new Bar("b2);
 
 b1.speak(); // alerts: Hello, I am b1
 b2.speak(); // alerts: Hello, I am b2 
-
-
 };
+
+[[ prototype ]] is a linkage between the objects and like between the child and parent object, this linkage can be created by using the object.create. If you call a property on a object which it can't hand;e then it will delegate the [[ prototype ]] chain to get the object which has it. To find out where an object's [[ prototype ]] points to ?? __proto__ or object.getprototype 
+
+*) 
