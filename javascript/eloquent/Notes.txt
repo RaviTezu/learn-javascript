@@ -1,1 +1,7 @@
 - In javascript functions are the only things that create a new scope. You are allowed to use free-standing blocks.
+
+- The 'delete' operator can delete a object property. It is a unary operator that, when applied to a property access expression, will re-move the named property from the object. This is not a common thing to do, but it is possible.
+Ex: > var obj1 = {"FirstName":"RaviTeja", "LastName":"Pothana"}
+    > delete obj1.LastName
+    > console.log(obj1.LastName)
+      undefined 
