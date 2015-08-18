@@ -5,3 +5,9 @@ Ex: > var obj1 = {"FirstName":"RaviTeja", "LastName":"Pothana"}
     > delete obj1.LastName
     > console.log(obj1.LastName)
       undefined 
+
+- The binary 'in' operator, when applied to a string and an object, returns a Boolean value that indicates whether that object has that property.
+Ex: > console.log("FirtName" in obj1)
+      true
+
+- 
