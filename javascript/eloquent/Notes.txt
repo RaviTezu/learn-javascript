@@ -48,4 +48,10 @@ Ex: > console.log("okay \n ".trim());
 
 - The arguments object has a length property that tells us the number of arguments that were really passed to the function. It also has a property for each argument, named 0, 1, 2, and so on.
 If that sounds a lot like an array to you, you’re right, it is a lot like an array. But this object, unfortunately, does not have any array methods (like slice or indexOf ), so it is a little harder to use than a real array.
-    
+
+- In browsers, the global scope object is stored in the window variable. 
+> var myVar = 10;
+> console.log("myVar" in window);
+true
+> console.log(window.myVar);
+10
